@@ -1,0 +1,344 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}VG_Shop{% endblock title %}</title>
+    
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+
+
+    <!-- ส่วนที่มาจากbootstrap -->
+
+    <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+<link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#712cf9">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    
+
+    
+        /* มาจากboootstap */
+
+
+
+
+    
+        .tom{
+            font-size: 30px;
+        }
+        @media (min-width: 300px) {
+        .bd-bd {
+          font-size: 0.5rem;
+        }
+      }
+      @media (min-width: 500px) {
+        .bd-bt {
+          font-size: 1rem;
+        }
+      }
+
+      .card-header-number {
+  position: absolute;
+  bottom: 3;
+  right: 0;
+  padding: 0.25rem 0.5rem;
+  background-color: #18f599;
+  border-radius: 0 0 0.25rem 0;
+}
+.card-header-number2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.1rem 0.2rem;
+  /* background-color: #faf6f6; */
+  border-radius: 0 0 0.25rem 0;
+}
+
+.custom-truncate {
+  display: inline-block;
+  max-width: 10%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.custom-truncate::before {
+  content: attr(title);
+}
+
+.custom-truncate:hover::before {
+  display: none;
+}
+
+.narrow {
+  max-width: 100px; /* set to your desired width */
+}
+.narrow-input {
+  width: 50px; /* set to your desired width */
+}
+
+.container {
+  font-size: 0.8rem; /* set to your desired base font size */
+  padding: 10px; /* set to your desired padding */
+}
+
+@media (max-width: 576px) { /* adjust this value to match your desired breakpoint */
+  .container {
+    font-size: 1rem; /* reduce font size for smaller screens */
+    padding: 10px; /* reduce padding for smaller screens */
+  }
+}
+
+    </style>
+</head>
+
+{% load static %}
+
+
+{% csrf_token %}
+<!-- <div class="container py-3"> -->
+ 
+     <nav class="navbar navbar-expand-sm navbar-dark bg-danger pb-1 ms-auto navbar-fixed-top">
+        <div class="container ms-auto ">
+            <img src="{% static 'image/shopping2.png' %}" alt="My image" width="5%" height="5%">&nbsp; 
+            <a href="{% url 'home-page'%}" class="navbar-brand tom">VG-Shop</a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar1">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <form class="d-flex" action="{% url 'search-page' %}" method="GET">
+                <input type="text"name="title" class="form-control me-4 "placeholder="Search">
+                <input type="submit" value="ค้นหา" class="btn btn-dark">
+            </form>
+            <div id="navbar1" class="collapse navbar-collapse " >
+              
+              <ul class="navbar-nav ms-auto my-md-2 "> 
+
+                    {% if user.profile.usertype == 'accountant' %}
+                    <li class="nav-item">
+                      <a href="{% url 'addproduct-page'%}"class="nav-link text-light ">เพิ่มสินค้า</a>
+                      
+                    </li>
+                    <li class="nav-item">
+                      <a class="btn btn-primary" href="{% url 'logout' %}">ออกจากระบบ</a>
+                    </li>
+
+
+                  {% else %}
+                  
+                  
+                  
+                    <li class="nav-item">
+                        <a href="{% url 'home-page'%}" class="nav-link text-light ">หน้าแรก</a>
+                    </li>
+                   
+                    <!-- <li class="nav-item"> 
+                        <a href="https://web.facebook.com/wuttiya.gob"class="nav-link text-light" target="_blank">ติดต่อ</a>
+                    </li>-->
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown">ติดต่อ</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Facebook</a></li>
+                            <li><a href="#" class="dropdown-item">Line</a></li>
+                            <li><a href="#" class="dropdown-item">Instargram</a></li>
+                        </ul>
+                    </li>
+                    <form class="d-flex" action="{% url 'category-page' %}" method="POST">
+                      {% csrf_token %}
+                    <li class="nav-item dropdown">
+                      <select class="form-control mb-4 " id="categoryr" name="categoryr" onchange='this.form.submit()'>
+                        <option selected disabled>หมวดหมู่สินค้า</option>
+                        <option value="14326" >สินค้าทั้งหมด</option>
+                        {% for cat in wcategory %}
+                        
+                        <option value="{{cat.id}}">{{cat.name}}</option>
+                        {% endfor %}
+                         
+                    </select>
+                    
+                        <!-- <a href="#" class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown">ร้านค้า</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">rrr</a></li>
+                            
+                        </ul> -->
+                    </li>
+                    
+                  </form>
+
+                    <li class="nav-item">
+                    {% if user.is_authenticated %} <!--ถ้าหากuserมีการล็อกอิน-->
+                    <a class="p-2 text-primary" href="{% url 'profile-page' %}">{{user.first_name}}</a>
+                    </li>
+                    <li class="nav-item"><a class="btn btn-primary" href="{% url 'logout' %}">ออกจากระบบ</a></li>
+                    
+                   {% else %}
+    
+                    <li class="nav-item"><a href="{% url 'register-page' %}"class="nav-link text-light">สมัครสมาชิก</a></li>
+                    <li class="nav-item"><a href="{% url 'login'%}"class="nav-link text-light ">เข้าสู่ระบบ</a></li>
+                    
+                    {% endif %}
+
+
+              </ul>
+
+                
+                
+                
+            </div>
+            <!--  
+            <li class="nav-item list-unstyled">
+              <a class="nav-link text-light text-uppercase font-weight-bold px-3 relative" href="#" id="menu-cart-botton">
+                <i class="fas fa-shopping-cart"></i>0
+            </a>
+            </li>
+            -->
+           
+            {% endif %}
+
+
+           
+
+          </div>
+        
+      </nav> 
+      <br>
+
+     
+      
+
+     
+
+
+
+    
+
+    <div class="container">
+        {% block content %}
+
+        {% endblock content %}
+    
+    </div>
+   
+    
+
+
+  
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+          <div class="col-6 col-md-3">
+            <img class="mb-2" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="24" height="19">
+            <small class="d-block mb-3 text-muted">&copy; 2017–2022</small>
+          </div>
+          <div class="col-6 col-md-3">
+            <h5>ศูนย์ช่วยเหลือ</h5>
+            <ul class="list-unstyled text-small">
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3">
+            <h5>เกี่ยวกับ VG-shop<h5>
+            <ul class="list-unstyled text-small">
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3">
+            <h5>การชำระเงิน</h5>
+            <ul class="list-unstyled text-small">
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+    </footer>
+ 
+  <!-- </div> -->
+</body>
+
+
+
+
+<script src="https://unpkg.com/htmx.org@1.7.0/dist/htmx.min.js"></script>
+
+
+</body>
+</html>
+

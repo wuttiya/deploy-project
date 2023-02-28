@@ -1,0 +1,110 @@
+{% extends 'company/base.html' %}
+
+
+{% block title %}สมัครสมาชิก{% endblock title %}
+
+
+
+
+
+{% block content%}
+
+    <center>
+        <h1>เพิ่มรายการสินค้า</h1>
+    </center>
+
+    
+
+    {% if warning %}
+    
+               <div class="alert alert-danger" role="alert">
+                 <a>{{warning}}</a>
+               </div>
+
+    {% endif %}
+
+    {% if message %}
+
+     <h3>{{ message }}</h3>
+
+    {% else %}
+
+        <form method="POST" enctype="multipart/form-data"> <!--ต้องใส่ในกรณีที่จะอัพโหลดไฟล์ ไม่เช่นนั้นจะไม่สามารถอัพโหลดได้-->
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="title">ชื่อสินค้า</label>
+                <input type="text" class="form-control" id="title" name="title" required><!--required เป็นฟังก์ชันที่บ่งบอกว่าบังคับให้ใส่-->
+            </div>
+
+            <div class="form-group">
+                <label for="descripttion">รายละเอียดสินค้า</label>
+                <textarea class="form-control" rows="5" id="descripttion" name="descripttion" placeholder="กรุณากรอกรายระเอียดสินค้าของคุณ"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="price">ราคา</label>
+                <input type="text" class="form-control" id="price" name="price">
+            </div>
+
+            <!-- <div class="form-group">
+              <label for="quantity">จำนวน</label>
+              <input type="text" class="form-control" id="quantity" name="quantity" value="1">
+            </div>  -->
+
+            <!-- <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="instock" id="instock" name="instock">
+                <label class="form-check-label" for="instock">
+                  มีใน stock หรือไม่
+                </label>
+            </div> -->
+            
+            <div class="form-group">
+              <label for="stock">จำนวน</label>
+              <input type="text" class="form-control" id="stock" name="stock" value="1">
+            </div> 
+
+
+            <div class="mb-3">
+                <label for="picture" class="form-label">รูปภาพสินค้า</label>
+                <input class="form-control" type="file" id="picture" name="picture">
+            </div>
+
+            <div class="mb-3">
+                <label for="specfile" class="form-label">ไฟล์ spec สินค้า</label>
+                <input class="form-control" type="file" id="specfile" name="specfile">
+            </div>
+
+            <!-- <li class="nav-item dropdown">
+                <a  class="nav-link dropdown-toggle text-uppercase"id="catagory" name="catagory" data-bs-toggle="dropdown">หมวดหมู่สินค้า</a>
+                <ul class="dropdown-menu">
+                    <li><a  class="dropdown-item " id="aaa" name="aaa">ทั่วไป</a></li>
+                    <li><a class="dropdown-item"id="bbb" name="bbb">สำอาง</a></li>
+                    <li><a  class="dropdown-item"id="ccc" name="ccc">เด็ก</a></li>
+                </ul>
+            </li> -->
+
+        <div class="col-md-4 mb-3"> 
+            <select class="form-control mb-4" name="category" >
+
+                <!-- <option selected disabled>หมวดหมู่สินค้า</option> -->
+        
+               {% for cat in pcategory %}
+                <option value="{{cat.id}}">{{cat.name}}</option>
+                {% endfor %}
+                
+            </select>
+            
+        </div>
+           
+            <button type="submit" class="btn btn-info my-3">เพิ่มสินค้า</button>
+
+    
+    {% endif %}
+
+        </form>
+
+
+
+
+{% endblock content%}

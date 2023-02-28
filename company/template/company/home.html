@@ -1,0 +1,175 @@
+
+{% extends 'company/base.html' %}
+{% load static %}
+
+{% block title %}หน้าแรก{% endblock title %}
+
+{% block content%}
+
+
+ {% comment %} 
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+
+
+    {% if user.profile.usertype == 'vip' %}
+
+    <h1 class="display-4">บูชาท้าวเวสสุวรรณ</h1>
+    <p class="lead">จุดสักการะธูป 9 ดอก และถวายดอกกุหลาบ 9 ดอก แล้วตั้งนะโม 3 จบ ระลึกถึงคุณบิดา มารดา และครูบาอาจารย์ทั้งหลาย ที่ประสิทธิประสาทวิชามาแล้วระลึกถึง พระพุทธ พระธรรม พระสงฆ์ แล้วท่องคาถาท้าวเวสสุวรรณเพื่อบูชา</p>
+    <p class="lead">บูชาวันนี้ลด50%</p>
+    {% else %}
+
+    <h1 class="display-4">บูชาท้าวเวสสุวรรณ</h1>
+    <p class="lead">จุดสักการะธูป 9 ดอก และถวายดอกกุหลาบ 9 ดอก แล้วตั้งนะโม 3 จบ ระลึกถึงคุณบิดา มารดา และครูบาอาจารย์ทั้งหลาย ที่ประสิทธิประสาทวิชามาแล้วระลึกถึง พระพุทธ พระธรรม พระสงฆ์ แล้วท่องคาถาท้าวเวสสุวรรณเพื่อบูชา</p>
+    <p class="lead">บูชาวันนี้ลด10%</p>
+
+    {% endif %}
+</div>
+
+
+
+<center>
+
+    {% for pd in allproduct %}
+         <h1>{{pd.title}}</h1>
+         {% if pd.picture %}
+              <img src="{{pd.picture.url}}"width="200" height="200">
+         {% endif %}
+
+         <p>
+           รายละเอียด:{{pd.descripttion}}<br>
+           {% if pd.picture %}
+                ไฟล์สเปค: <a href="{{pd.specfile}}">ดาวโหลดไฟล์</a>
+           {% endif %}
+           
+           ราคา{{pd.price}}<br>
+           เหลือในสต็อก:{{pd.quantity}}เครื่อง<br>
+         </p>
+    {% endfor %}
+
+
+</center>
+
+{% endcomment %}
+
+
+
+{% if notsearch %}
+
+<h3>{{ notsearch }}</h3>
+
+{% else %}
+
+
+
+
+<section class="section-intro padding-y-sm mb-4">
+  <div class="container">
+  
+  <div class="intro-banner-wrap">
+    <img src="{% static 'image/imm.jpg' %}" class="img-fluid rounded">
+  </div>
+  
+  </div>    
+  </section>
+
+  <div class="row row-cols-1 row-cols-md-5 mb-3 text-center">
+{% for row in allproduct %}
+      
+        
+
+          
+      
+            <div class="col">
+              <div class="card mb-4 rounded-3 shadow-sm">
+                {% if row.picture %}
+                
+
+
+                  <a href="{% url 'buy-page' row.id%}"> <img class="card-img-top" src="{{row.picture.url}}" width="250" height="230"></a>
+                {% else %}
+                  <img class="card-img-top" src="{% static 'image/noimage.png' %}" width="300" height="250">
+                {% endif %}
+                <div class="card-header py-3">
+                  <h6 class="my-0 fw-normal">{{row.title}}</h6>
+                  <span class="card-header-number">฿{{row.price}}</span>
+                </div>
+                <!-- <div class="card-body"> -->
+                  <!-- <h4 class="card-title pricing-card-title"> ฿<small class="text-muted fw-light">{{row.price}}</small></h4> -->
+                  
+                  
+                <!-- </div> -->
+
+                {% csrf_token %}
+                <div class="card-footer">
+                  
+                  {% if row.stock <= 0 %}
+                        <p>สินค้าหมด</p>
+                  {% else %}
+
+                        <a 
+                        href="{% url 'buy-page' row.id%}" class="btn btn-primary " 
+                        
+                        >ซื้อเลย</a>
+                        <!-- <small class="text-muted fw-light">&nbsp;&nbsp;&nbsp;เหลือ{{row.stock}}ชิ้น</small> -->
+                        <span class="card-header-number2">เหลือ{{row.stock}}</span>
+                  {% endif %}
+
+
+                </div>
+              </div>
+            </div>
+           
+
+        
+      
+      {% endfor %}
+
+    </div>    
+   
+<hr>
+<ul class="pagination">
+        
+        {% if allproduct.has_previous and allproduct.has_next != True %}
+            <li class="page-item"><a class="page-link" href="?page={{allproduct.previous_page_number}}"> < </a></li>
+            <li class="page-item"><a class="page-link" href="?page={{allproduct.number|add:-1}}">{{allproduct.number|add:-1}}</a></li>
+            <li class="page-item active"><a class="page-link" href="?page={{allproduct.number}}">{{allproduct.number}}</a></li>
+        {% endif %}
+
+
+        {% if allproduct.has_previous and allproduct.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{allproduct.previous_page_number}}"> < </a></li>
+            <li class="page-item"><a class="page-link" href="?page={{allproduct.number|add:-1}}">{{allproduct.number|add:-1}}</a></li>
+            <li class="page-item active"><a class="page-link" href="?page={{allproduct.number}}">{{allproduct.number}}</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{allproduct.number|add:1}}">{{allproduct.number|add:1}}</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{allproduct.next_page_number}}"> > </a></li>
+        {% endif %}
+
+        {% if allproduct.has_next and allproduct.has_previous != True %}
+            <li class="page-item active"><a class="page-link" href="?page={{allproduct.number}}">{{allproduct.number}}</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{allproduct.number|add:1}}">{{allproduct.number|add:1}}</a></li>
+            {% if allproduct.num_pages > 2 %}
+            <li class="page-item"><a class="page-link" href="?page={{allproduct.number|add:2}}">{{allproduct.number|add:2}}</a></li>
+            {% endif %}
+            <li class="page-item"><a class="page-link" href="?page={{allproduct.next_page_number}}"> > </a></li>
+        {% endif %} 
+        
+        
+
+     </ul> <p> หน้า {{allproduct.number}} จาก {{allproduct.paginator.num_pages}} <p></p>
+
+
+
+{% endif %} 
+  
+
+
+{% endblock content %}
+
+
+
+      
+
+
+
+
+

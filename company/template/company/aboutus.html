@@ -1,0 +1,22 @@
+
+{% extends 'company/base.html' %}
+{% load static %}
+
+{% block title %}เกี่ยวกับ{% endblock title %}
+
+{% block content%}
+
+
+<section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">ข้อมูเกี่ยวกับเรา</h1>
+      <img src="{% static 'image/wes4.jpg'%}"width="200" height="200">
+      <p class="lead text-muted">ก่อนที่เราจะไปดูความศักดิ์สิทธิ์ของท้าวเวสสุวรรณ เรามาแวะดูประวัติความเป็นมาและตำนานกันก่อน ย้อนเวลากลับไปหลายร้อยปีตำนานได้เล่าว่าท้าวเวสสุวรรณเป็น 1 ในท้าวจตุโลกบาลทั้ง 4 ทั้งหมดมีหน้าที่ในการดูแลปกป้องและคุ้มครองโลกมนุษย์ โดยท้าวเวสสุวรรณมีที่ประทับอยู่ทางทิศเหนือ มนุษย์รวมถึงเทพทุกองค์กล่าววว่า ตามตำนานของพระพุทธศาสนาได้บอกเล่าว่า อดีตชาติของท้าวเวสสุวรรณครั้งที่ยังเป็นมนุษย์ ท่านเป็นพราหมณ์มาก่อน! เป็นพราหมณ์ที่ใจบุญ หมั่นทำกุศล และคอยช่วยเหลือเพื่อนมนุษย์ด้วยกัน</p>
+      <p>
+        <a href="#" class="btn btn-primary my-2">Main call to action</a>
+        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+      </p>
+    </div>
+  </section>
+
+{% endblock content%}

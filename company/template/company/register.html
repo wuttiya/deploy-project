@@ -1,0 +1,78 @@
+{% extends 'company/base.html' %}
+
+
+{% block title %}สมัครสมาชิก{% endblock title %}
+
+{% block content%}
+
+    <center>
+        <h1>สมัครสมาชิก</h1>
+    </center>
+
+    
+
+    {% if warning %}
+    
+               <div class="alert alert-danger" role="alert">
+                 <a>{{warning}}</a>
+               </div>
+
+    {% endif %}
+
+    {% if message %}
+
+     <h3>{{ message }}</h3>
+
+    {% else %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {% if fullname %}
+
+            <div class="form-group">
+                <label for="fullname">ชื่อ-สกุล</label>
+                <input type="text" class="form-control" id="fullname" name="fullname" value="{{fullname}}" required>
+            </div>
+
+            {% else %}
+            <div class="form-group">
+                <label for="fullname">ชื่อ-สกุล</label>
+                <input type="text" class="form-control" id="fullname" name="fullname" required>
+            </div>
+            {% endif %}
+            <div class="form-group">
+                <label for="mobile">เบอร์มือถือ</label>
+                <input type="text" class="form-control" id="mobile" name="mobile">
+            </div>
+
+            <div class="form-group">
+              <label for="username">email</label>
+              <input type="text" class="form-control" id="username" name="username">
+            </div>
+
+            <div class="form-group">
+                <label for="password">รหัสผ่าน</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            
+            <div class="form-group">
+                <label for="password2">รหัสผ่าน</label>
+                <input type="password" class="form-control" id="password2" name="password2">
+            </div>
+
+            <button type="submit" class="btn btn-info">Register</button>
+    {% endif %}
+
+        </form>
+
+
+
+
+
+
+
+
+
+
+{% endblock content%}

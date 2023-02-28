@@ -1,0 +1,41 @@
+
+{% extends 'company/base.html' %}
+{% load static %}
+
+{% block title %}เกี่ยวกับ{% endblock title %}
+
+{% block content%}
+
+<center>
+    <h1>ฝ่ายบัญชี</h1>
+    <p style="color:brown;">หน้านี้แสดงรายชื่อทั้งหมดให้ฝ่ายบัญชีติดต่อกลับ</p>
+</center>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ลำดับ</th>
+        <th scope="col">หัวข้อ</th>
+        <th scope="col">อีเมลล์</th>
+        <th scope="col">รายละเอียด</th>
+        <th scope="col">จัดการแล้ว</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for ct in contact %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td> <a href="{% url 'action-page' ct.id %}">{{ct.title}}</a></td>
+        <td>{{ct.email}}</td>
+        <td>{{ct.detail}}</td>
+        {% if ct.complete == True %}
+             <td><i class="fa fa-check" style="color:green;"></i></td>
+        {% else %}
+             <td><i class="fa fa-times" style="color:black;"></i></td>
+        {% endif %}
+      </tr>
+    {% endfor %}  
+    </tbody>
+  </table>
+  
+{% endblock content%}
